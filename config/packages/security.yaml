@@ -1,0 +1,63 @@
+security:
+    #crée une hiérarchie pour les roles
+    role_hierarchy:
+        ROLE_ADMIN: [ROLE_BIBLIVORE, ROLE_STANDARD, ROLE_DECOUVERTE]
+        ROLE_BIBLIVORE: [ROLE_STANDARD, ROLE_DECOUVERTE]
+        ROLE_STANDARD: ROLE_DECOUVERTE
+    providers:
+    # les utilisateurs sont stockés dans la mémoire
+        in_memory:
+            memory:
+                users:
+                    admin:
+                        password: $2y$12$.K8gGEFjEVGh/hF1JrMjE.sjHfreDCUAOqBk1IuoWmaEfwGhNvqWS
+                        roles: 'ROLE_ADMIN'
+                    marie:
+                        password: $2y$12$Ui2u2cbKSd66yo3nY7Mj1ekLajM9RVS3y..ohSOE5.HvcuFuwKYda
+                        roles: 'ROLE_DECOUVERTE'
+                    jean:
+                        password: $2y$12$CDmfnsh.0YW/ZezCQgDO7uO9t9Q5Aabk0VcHVXBh/JSuVCoaSXoiu
+                        roles: 'ROLE_STANDARD'
+                    marc:
+                        password: $2y$12$2k7OFjMl/18sFI8V8ZSZlOkuE5DSaKz.H2xskfpKHweQ8La46NlWO
+                        roles: 'ROLE_BIBLIVORE'
+                     
+    #encodage des mots de passe avec un algorithme bcrypt. Cryptage avec la fonction bin/console security:encode-password
+    encoders:
+        Symfony\Component\Security\Core\User\User:
+            algorithm: bcrypt
+            cost: 12
+        
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: true
+            http_basic: true
+            # login et logout
+            form_login:
+                login_path: login
+                check_path: login
+            logout:
+                path: /logout
+                target: /
+            
+
+            # activate different ways to authenticate
+
+            # http_basic: true
+            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+
+            # form_login: true
+            # https://symfony.com/doc/current/security/form_login_setup.html
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    
+    # contrôle d'accès pour les routes de test des différents rôles
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/decouverte, roles: ROLE_DECOUVERTE }
+        - { path: ^/standard, roles: ROLE_STANDARD }
+        - { path: ^/biblivore, roles: ROLE_BIBLIVORE }

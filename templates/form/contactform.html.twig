@@ -1,0 +1,29 @@
+{{ form_start(contactform, {'attr': {'class': 'mu-contact-form' }}) }}
+
+    <div class="form-group">
+        {{ form_widget(contactform.name, {'attr': {'placeholder': 'Nom','class':'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_widget(contactform.email, {'attr': {'placeholder': 'Votre e-mail','class':'form-control'}}) }}
+    </div>
+    <div class="form-group">
+            {{ form_widget(contactform.message, {'attr': {'placeholder': 'Message', 'rows': '8','class':'form-control'}}) }}
+        </div>
+    <div class="col-12 flex justify-content-center">
+        <input class="mu-send-msg-btn" type="submit" value="Envoyer">
+    </div>
+{{ form_end(contactform) }}
+
+
+<!-- <form id="ajax-contact" method="post" action="mailer.php" class="mu-contact-form">
+                                    <div class="form-group">                
+                                        <input type="text" class="form-control" placeholder="Name" id="name" name="name" required>
+                                    </div>
+                                    <div class="form-group">                
+                                        <input type="email" class="form-control" placeholder="Enter Email" id="email" name="email" required>
+                                    </div>              
+                                    <div class="form-group">
+                                        <textarea class="form-control" placeholder="Message" id="message" name="message" required></textarea>
+                                    </div>
+                                    <button type="submit" class="mu-send-msg-btn"><span>Envoyer</span></button>
+                                </form> -->

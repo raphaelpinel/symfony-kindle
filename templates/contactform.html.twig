@@ -1,0 +1,20 @@
+{# début d'affichage d'un formulaire reprenant la variable contactform avec comme attribut une classe css #}
+{{ form_start(contactform, {'attr': {'class': 'mu-contact-form' }}) }}
+    <div class="form-group">
+    {# le widget crée un input pour le champ "name", un placeholder et une classe css #}
+        {{ form_widget(contactform.name, {'attr': {'placeholder': 'Your name', 'class':'form-control'}}) }}
+    </div>
+    <div class="form-group">
+    {# le widget crée un input pour le champ "email", un placeholder et une classe css #}
+        {{ form_widget(contactform.email, {'attr': {'placeholder': 'Your email', 'class':'form-control'}}) }}
+    </div>
+    <div class="form-group">
+    {# le widget crée un input pour le champ "message", un placeholder et une classe css #}
+            {{ form_widget(contactform.message, {'attr': {'placeholder': 'Message', 'rows': '8', 'class':'form-control'}}) }}
+        </div>
+    <div class="col-12 flex justify-content-center">
+    {# bouton submit qui affiche "envoyer #}
+        <input class="mu-send-msg-btn" type="submit" value="Send">
+    </div>
+    {# fin du formulaire #}
+{{ form_end(contactform) }}

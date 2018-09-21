@@ -1,0 +1,10 @@
+easy_admin:
+    entities:
+        # ajoute toutes les entités voulues dans l'interface admin
+        - App\Entity\Ebook
+        - App\Entity\Chapter
+        - App\Entity\File
+        - App\Entity\Author
+        - App\Entity\Social
+        - App\Entity\Testimonial
+        - App\Entity\Download

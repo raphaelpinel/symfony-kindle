@@ -1,0 +1,11 @@
+{% block flash_messages %}
+    {# Loops on each type and message present in the session // boucle sur chaque type et message présent dans la session #}
+    {% for type, messages in app.session.flashbag.all() %}
+        {# loops on all messages to create an alert // boucle sur tous les messages pour créer une alerte #}
+        {% for message in messages %}
+            <div class="alert alert-{{ type }} alert-dismissible" role="alert">
+                {{ message | raw }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+{% endblock %}

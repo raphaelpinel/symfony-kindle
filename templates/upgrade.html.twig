@@ -1,0 +1,23 @@
+{% extends "index.html.twig" %}
+{% block body %}
+
+    <section id="mu-testimonial">
+        <div class="container">
+            <div class="row">
+                    <div class="mu-contact-area">
+                        <div class="mu-heading-area">
+                            <h2 class="mu-heading-title">Désolé, votre formule d'abonnement ne vous permet plus de télécharger de livre pour le moment</h2>
+                            <p> Avec votre formule actuelle, vous devez attendre {{ app.request.get('timeRemaining')|date("d") }}  jours avant de pouvoir télécharger un autre livre.
+                            <p>N'attendez plus, faite vous plaisir et souscrivez dès aujourd'hui à une formule plus adaptée à vos besoins !</p>
+                            <br>
+                                    <a type="button" class="mu-send-msg-btn" href="{{path('home')}}#mu-pricing" style="margin-top: 0;"><span>Changez de formule</span></a>
+                            <!-- <span class="mu-header-dot"></span> -->
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

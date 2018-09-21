@@ -1,0 +1,48 @@
+{% extends "index.html.twig" %}
+{% block body %}
+
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+    <section id="mu-testimonial">
+        <div class="container">
+            <div class="row">
+                    <div class="mu-contact-area">
+                        <div class="mu-heading-area">
+                            <h2 class="mu-heading-title">
+                            Please login to your account
+                            {# merci de bien vouloir vous connecter à votre compte #}
+                            </h2>
+                            <!-- <span class="mu-header-dot"></span> -->                           
+                        </div>
+                        
+                        <!-- Start Login Content -->
+                        <div class="mu-contact-content">
+                            <div class="col-md-12">
+                                <form action="{{ path('login') }}" method="post" class="mu-contact-form">
+                                    <div class="form-group col-md-5">
+                                        <input type="text" placeholder="User name" class="form-control" id="username" name="_username" value="{{ last_username }}" />
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                        <input type="password" placeholder="Password" class="form-control" id="password" name="_password" />
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <button type="submit" class="mu-send-msg-btn" style="margin-top: 0;"><span>Login</span></button>
+                                    </div>
+                                </form>
+                        </div>
+                        <!-- End Login Content -->
+                        {# forwards the user towards the pricing plans // renvoie l'utilisateur vers les offres d'abonnement #}
+                    If you don't have yet an account:
+                    {# Si vous n'avez pas encore de compte  #}
+                    <a type="button" class="mu-send-msg-btn" href="{{path('home')}}#mu-pricing" style="margin-top: 0;">
+                    <span>Choose a plan</span>
+                    {# <span>abonnez vous</span> #}
+                    </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
